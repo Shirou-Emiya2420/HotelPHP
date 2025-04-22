@@ -106,7 +106,8 @@ Le fichier `style.css` propose :
 
 ## 👨‍💻 Auteur
 
-Projet généré automatiquement par ChatGPT à partir de la structure orientée objet fournie.
+Ce projet a été réalisé par Charles LINDECKER.
+Le README a été généré automatiquement à partir des fichiers du projet.
 
 ---
 
