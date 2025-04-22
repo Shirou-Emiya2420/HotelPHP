@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hôtel</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <?php require_once "Hotel.php"; require_once "Chambre.php"; require_once "Client.php"; require_once "Reservation.php"; ?>
@@ -18,16 +19,16 @@
     
     // Création des hôtels
     $hotels = [
-        new Hotel("1 rue Paris", "Hôtel Parisien", "Paris"),
-        new Hotel("10 rue Lyon", "Hôtel Lyonnais", "Lyon"),
-        new Hotel("50 avenue Bordeaux", "Hôtel Bordelais", "Bordeaux"),
-        new Hotel("77 boulevard Nice", "Hôtel Niçois", "Nice"),
+        new Hotel(rand(1,200) . " rue Paris", "Hôtel Parisien", "Paris"),
+        new Hotel(rand(1,200) . " rue Lyon", "Hôtel Lyonnais", "Lyon"),
+        new Hotel(rand(1,200) . " avenue Bordeaux", "Hôtel Bordelais", "Bordeaux"),
+        new Hotel(rand(1,200) . " boulevard Nice", "Hôtel Niçois", "Nice"),
     ];
     
     // Création des chambres
     foreach ($hotels as $hotel) {
         for ($i = 1; $i <= 10; $i++) {
-            new Chambre(rand(80, 200), $hotel, rand(0, 1) === 1, rand(1, 3), rand(80, 200));
+            new Chambre(rand(80, 600), $hotel, rand(0, 1) === 1, rand(1, 7), rand(80, 200));
         }
     }
     function randomDate($start_date, $end_date)
@@ -55,9 +56,18 @@
         }
     }
     
-    echo $hotels[0]; echo $hotels[1]; echo $hotels[2]; echo $hotels[3];
-    $hotels[0]->affReservation(); $hotels[1]->affReservation(); $hotels[2]->affReservation(); $hotels[3]->affReservation();
-    
+    foreach($hotels as $hotel){
+        echo $hotel;
+    }
+    foreach($hotels as $hotel){
+        $hotel->affReservation();
+    }
+    foreach($clients as $client){
+        $client->affReservation();
+    }
+    foreach($hotels as $hotel){
+        $hotel->affStatChambre();
+    }
     
     
     ?>

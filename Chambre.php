@@ -41,7 +41,7 @@ class Chambre{
     }
     public function getNumChambre(): int {
         return $this->_num_chambre;
-    }
+    } 
 
     public function setPrix(int $prix): void {
         $this->_prix = $prix;

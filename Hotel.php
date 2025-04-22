@@ -53,7 +53,30 @@ class Hotel{
         }
         echo $str . "<br>";
     }
-
+    public function affStatChambre(): void{
+        $str = "<h2>Status des chambres de " . $this->_name . " ***** " . $this->_ville . "</h2><br><table><thead>
+        <tr>
+            <th>Chambre</th>
+            <th>Prix (€)</th>
+            <th>WiFi</th>
+            <th>État</th>
+        </tr>
+    </thead>
+    <tbody>";
+        foreach($this->_chambre_list as $chambre){
+            $str .= "<tr><th>Chambre" . $chambre->getNumChambre() . "</th><th>" . $chambre->getPrix() . " (€)</th>";
+            $wifi = "Non";
+            if($chambre->getWifi()){
+                $wifi = "Oui";
+            }
+            $reservation = "Réservée";
+            if($chambre->getReserve() === []){
+                $reservation = "Disponble";
+            }
+            $str .= "<th>" . $wifi . "</th>" . "<th>" . $reservation . "</th></tr>";
+        }
+        echo $str . "</tbody></table>" . "<br>";
+    }
 
     public function getVille(): string {
         return $this->_ville;
@@ -76,10 +99,12 @@ class Hotel{
     }
     public function setAdr(string $adr): void {
         $this->_adr = $adr;
-    }
+    } 
     public function setChambreList(array $list): void {
         $this->_chambre_list = $list;
     }
 }
 
 ?>
+
+
