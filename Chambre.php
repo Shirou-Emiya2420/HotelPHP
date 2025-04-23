@@ -18,12 +18,20 @@ class Chambre{
         $this->_nb_lit = $nb_lit;
         $this->_num_chambre = $num_chambre;
         $this->_reserve = [];
-        $hotel->ajouterChambre($this);
+        $hotel->ajouterChambre($this); 
     }
 
+    /**
+     * Ajoute une réservation à la liste du client.
+     *
+     * @param Reservation $reservation La réservation à ajouter
+     * @return void
+     */
     public function addReservation(Reservation $reservation){
         $this->_reserve[] = $reservation;
     }
+
+    //Getter
     public function getPrix(): int {
         return $this->_prix;
     }
@@ -43,6 +51,7 @@ class Chambre{
         return $this->_num_chambre;
     } 
 
+    //Setter
     public function setPrix(int $prix): void {
         $this->_prix = $prix;
     }

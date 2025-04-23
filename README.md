@@ -1,6 +1,6 @@
 # 🏨 Projet PHP – Gestion d’Hôtels
 
-Ce projet simule un système de réservation d’hôtels en PHP orienté objet. Il permet de gérer des **clients**, des **hôtels**, des **chambres** et des **réservations**, avec un affichage HTML et une mise en page CSS responsive.
+Ce projet simule un système de réservation d’hôtels en PHP orienté objet. Il permet de gérer des **clients**, des **hôtels**, des **chambres** et des **réservations**, avec un affichage HTML stylisé et responsive.
 
 ---
 
@@ -9,10 +9,9 @@ Ce projet simule un système de réservation d’hôtels en PHP orienté objet. 
 ```
 .
 ├── index.php             // Point d’entrée : instanciation des objets, affichage
-├── Client.php            // Classe Client
 ├── Hotel.php             // Classe Hotel, contient les chambres
 ├── Chambre.php           // Classe Chambre, liée à un hôtel
-├── Reservation.php       // Classe Reservation
+├── Reservation.php       // Classe Reservation, relie client et chambre
 ├── style.css             // Feuille de style (design responsive moderne)
 ```
 
@@ -20,97 +19,77 @@ Ce projet simule un système de réservation d’hôtels en PHP orienté objet. 
 
 ## ⚙️ Fonctionnalités principales
 
-- Création dynamique de :
-  - 5 clients
-  - 4 hôtels
-  - 10 chambres par hôtel avec attributs aléatoires (prix, wifi, lits, dispo)
-  - Réservations pour 3 des 4 hôtels (3 chambres réservées par hôtel)
+- Génération automatique de :
+  - Plusieurs hôtels
+  - Chambres avec données aléatoires (prix, lits, wifi, état)
+  - Réservations aléatoires entre clients et chambres
 
 - Affichage :
-  - Informations des hôtels
-  - Statistiques de chambres (totales, réservées, libres)
-  - Liste des réservations par hôtel
-  - Liste des réservations par client
-  - Tableaux de statut des chambres avec prix, wifi et état
+  - Détail des hôtels (nom, adresse, nombre de chambres)
+  - Liste des chambres avec leur état et caractéristiques
+  - Réservations triées par client ou par hôtel
+  - Statistiques : total de chambres, réservées, disponibles
 
 - Design :
-  - CSS responsive
-  - Affichage clair, coloré et moderne
-  - Adapté mobile/tablette
+  - CSS moderne et responsive (mobile/tablette)
+  - Tableaux visuellement agréables avec couleur selon disponibilité
+  - Affichage clair et lisible des données
 
 ---
 
-## 🧱 Classes et responsabilités
-
-### `Client.php`
-Représente un client avec :
-- Nom
-- Prénom
-- Liste de ses réservations
+## 🧱 Détails des classes
 
 ### `Hotel.php`
-Contient :
 - Nom, adresse, ville
-- Liste des chambres
-- Méthodes pour récupérer les chambres, réserver, afficher les stats
+- Liste de chambres
+- Méthodes de réservation, affichage des stats
 
 ### `Chambre.php`
-Une chambre possède :
-- Numéro auto-incrémenté
-- Prix
-- État (dispo/réservée)
-- Capacité (nb de lits)
-- Wifi (booléen)
-- Référence à l’hôtel
+- Numéro unique
+- Prix, lits, wifi
+- Statut : disponible ou réservée
+- Rattachée à un hôtel
 
 ### `Reservation.php`
-Relie un client à une chambre :
-- Client
-- Chambre
-- Date de début / fin
-- Ajoute automatiquement la réservation à la chambre et au client
+- Contient : chambre, client, dates de séjour
+- Ajoute la réservation au client et à la chambre
 
 ---
 
-## 🖥️ Installation et exécution
+## 🖥️ Installation
 
 1. **Pré-requis** :
    - PHP 7+ installé (ou WAMP/XAMPP)
-
-2. **Utilisation** :
-   - Place tous les fichiers dans un dossier (ex : `/htdocs/projet_hotel`)
-   - Lance `index.php` depuis ton navigateur (via `localhost`)
-   - À chaque rafraîchissement, de nouvelles données sont générées
+2. **Lancement** :
+   - Copier le projet dans `htdocs`
+   - Lancer `index.php` via `localhost`
 
 ---
 
 ## 🎨 Design CSS
 
-Le fichier `style.css` propose :
-- Thème clair avec touches de bleu
-- Tableaux arrondis, responsive et lisibles
-- Comportement adaptatif mobile via media queries
-- Statut visuel coloré (rouge : réservée, vert : disponible)
+- Thème clair avec accents bleus
+- Comportement responsive : mobile / tablette
+- Tableaux arrondis, ombrés, avec mise en évidence du statut
 
 ---
 
 ## ✅ À améliorer
 
-- Persistance des données (BDD, JSON, etc.)
-- Interface de réservation interactive
-- Système d’authentification client
-- Tri et filtrage des réservations
-- Vue admin pour la gestion des hôtels
+- Sauvegarde des données (fichier, base de données)
+- Système d'authentification client
+- Interface utilisateur pour réservation
+- Tri dynamique des réservations et chambres
 
 ---
 
 ## 👨‍💻 Auteur
 
-Ce projet a été réalisé par Charles LINDECKER.
-Le README a été généré automatiquement à partir des fichiers du projet.
+Projet réalisé par Charles LINDECKER.  
+README généré automatiquement à partir de la structure actuelle du projet.
 
 ---
 
 ## 📄 Licence
 
-Libre de droits pour usage pédagogique et personnel.
+Libre de droits pour usage personnel ou éducatif.

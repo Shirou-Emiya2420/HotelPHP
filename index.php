@@ -4,9 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hôtel</title>
-    <link rel="stylesheet" href="style.css">
+<!--     <link rel="stylesheet" href="style.css"> -->
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.23.6/dist/css/uikit.min.css" />
+
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.23.6/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.23.6/dist/js/uikit-icons.min.js"></script>
 </head>
-<body>
+<body class="uk-background-muted">
     <?php require_once "Hotel.php"; require_once "Chambre.php"; require_once "Client.php"; require_once "Reservation.php"; ?>
     <?php 
     $clients = [
@@ -33,7 +39,7 @@
     }
     function randomDate($start_date, $end_date)
     {
-        // Convert to timetamps
+        // Convert to timetamps 
         $min = strtotime($start_date);
         $max = strtotime($end_date);
     
@@ -50,26 +56,43 @@
             new Reservation(
                 $clients[array_rand($clients)],
                 $chambre,
-                new DateTime("2025-05-10"),
-                new DateTime("2025-05-10")
+                new DateTime(rand(2015, 2023) . '-01-01'),
+                new DateTime(rand(2015, 2023) . '-01-01')
             );
         }
     }
     
-    foreach($hotels as $hotel){
-        echo $hotel;
-    }
-    foreach($hotels as $hotel){
-        $hotel->affReservation();
-    }
-    foreach($clients as $client){
-        $client->affReservation();
-    }
-    foreach($hotels as $hotel){
-        $hotel->affStatChambre();
-    }
+
     
     
     ?>
+    <div class="uk-flex uk-flex-around uk-flex-wrap uk-animation-fade">
+        <?php     
+        foreach($hotels as $hotel){
+            echo $hotel;
+        }
+        ?>
+    </div>
+    <div class="uk-flex uk-flex-row uk-flex-around uk-flex-wrap uk-animation-fade">
+        <?php     
+        foreach($hotels as $hotel){
+            $hotel->affReservation();
+        }
+        ?>
+    </div>
+    <div class="uk-flex uk-flex-row uk-flex-around uk-flex-wrap uk-animation-fade">
+        <?php     
+        foreach($clients as $client){
+            $client->affReservation();
+        }
+        ?>
+    </div>
+        <div class="uk-flex uk-flex-row uk-flex-around uk-flex-wrap uk-animation-fade uk-text-justify">
+        <?php     
+        foreach($hotels as $hotel){
+            $hotel->affStatChambre();
+        }
+        ?>
+    </div>
 </body>
 </html>

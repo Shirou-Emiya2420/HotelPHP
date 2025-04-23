@@ -1,5 +1,6 @@
 <?php 
-require_once "Client.php";require_once "Chambre.php";
+require_once "Client.php";
+require_once "Chambre.php";
 class Reservation{
 
     private Client $_client;
@@ -16,12 +17,13 @@ class Reservation{
         $chambre->addReservation($this);
     }
 
+    //Getter
     public function getClient(): Client {
         return $this->_client;
     }
     public function getChambre(): Chambre {
         return $this->_chambre;
-    }
+    } 
     public function getDateDebut(): DateTime {
         return $this->_date_debut;
     }
@@ -29,6 +31,7 @@ class Reservation{
         return $this->_date_fin;
     }
 
+    //Setter
     public function setClient(Client $client): void {
         $this->_client = $client;
     }
